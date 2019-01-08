@@ -3,9 +3,9 @@ import { Provider } from 'react-redux';
 import ReduxToaster from 'react-redux-toastr';
 
 import store from './store';
-import Routes from '~/routes';
+import Routes from './routes';
 
-import GlobalStyle from '~/styles/global';
+import GlobalStyle from './styles/global';
 
 const App = () => (
   <Provider store={store}>
