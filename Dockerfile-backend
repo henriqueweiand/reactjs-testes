@@ -1,0 +1,8 @@
+FROM node:10-alpine
+
+WORKDIR /usr/app
+
+RUN yarn
+
+EXPOSE 3333
+CMD ['adonis', 'serve']

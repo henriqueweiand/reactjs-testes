@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  database:
+    image: mysql:5.7
+    container_name: database
+    restart: always
+    volumes:
+      - /Users/henriqueweiand/Documents/git/weride/reactjs-testes/database/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+    ports:
+      - 3306:3306
+
+  backend:
+    build: .
+    container_name: backend
+    volumes:
+      - /Users/henriqueweiand/Documents/git/weride/reactjs-testes/backend:/usr/app
+    ports:
+      - "3333:3333"
+    command: yarn start
+    depends_on:
+      - "database"
+    links:
+      - database:database
+
+  app:
+    build: .
+    container_name: app
+    volumes:
+      - /Users/henriqueweiand/Documents/git/weride/reactjs-testes/app:/usr/app
+    ports:
+      - "3000:3000"
+    command: yarn start
+    depends_on:
+      - "backend"
+    links:
+      - backend:backend
