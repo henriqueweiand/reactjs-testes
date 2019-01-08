@@ -16,7 +16,7 @@ const Routes = () => (
     <Switch>
       <Guest path="/singin" component={Singin} />
       <Guest path="/singup" component={Singup} />
-      <Private path="/main" exact component={Main} />
+      <Private path="/" exact component={Main} />
     </Switch>
   </ConnectedRouter>
 );
