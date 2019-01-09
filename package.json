@@ -1,0 +1,8 @@
+{
+  "name": "reactjs-testes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://henriqueweiand@github.com/henriqueweiand/reactjs-testes.git",
+  "author": "Henrique Weiand <henriqueweiand@gmail.com>",
+  "license": "MIT"
+}
