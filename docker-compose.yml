@@ -18,6 +18,10 @@ services:
     restart: always
     ports:
       - 6379:6379
+    depends_on:
+      - "database"
+    links:
+      - database:database
 
   backend:
     build: .
@@ -45,4 +49,4 @@ services:
     depends_on:
       - "backend"
     links:
-      - backend:backend
+      - backend
