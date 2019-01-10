@@ -15,7 +15,9 @@ const providers = [
   '@adonisjs/auth/providers/AuthProvider',
   '@adonisjs/bodyparser/providers/BodyParserProvider',
   '@adonisjs/cors/providers/CorsProvider',
-  '@adonisjs/lucid/providers/LucidProvider'
+  '@adonisjs/lucid/providers/LucidProvider',
+  'adonis-kue/providers/KueProvider',
+  '@adonisjs/redis/providers/RedisProvider'
 ]
 
 /*
@@ -28,7 +30,9 @@ const providers = [
 |
 */
 const aceProviders = [
-  '@adonisjs/lucid/providers/MigrationsProvider'
+  '@adonisjs/lucid/providers/MigrationsProvider',
+  'adonis-kue/providers/CommandsProvider'
+
 ]
 
 /*
@@ -55,4 +59,8 @@ const aliases = {}
 */
 const commands = []
 
-module.exports = { providers, aceProviders, aliases, commands }
+const jobs = [
+  'App/Jobs/NewUserEmail'
+]
+
+module.exports = { providers, aceProviders, aliases, commands, jobs }

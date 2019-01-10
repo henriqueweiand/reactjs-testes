@@ -21,3 +21,12 @@ Route.get('/', () => {
 })
 
 Route.post('sessions', 'SessionController.store')
+Route.post('users', 'UserController.store')
+
+Route.group(() => {
+  Route.resource('domains', 'DomainController').apiOnly()
+}).middleware('auth')
+
+Route.group(() => {
+  Route.get('users', 'UserController.teste')
+}).middleware(['auth', 'domain'])

@@ -5,9 +5,12 @@ import { routerMiddleware } from 'connected-react-router';
 import history from '~/routes/history';
 import createRootReducer from './ducks';
 
-const sagaMiddleware = createSagaMiddleware();
+const sagaMonitor = process.env.NODE_ENV === 'development' ? console.tron.createSagaMonitor() : null;
+const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
-const store = createStore(
+const createAppropriateStore = process.env.NODE_ENV === 'development' ? console.tron.createStore : createStore;
+
+const store = createAppropriateStore(
   createRootReducer(history), // root reducer with router state
   // false,
   compose(

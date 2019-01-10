@@ -3,8 +3,11 @@ import { Provider } from 'react-redux';
 import ReduxToaster from 'react-redux-toastr';
 
 import GlobalStyle from '~/styles/global';
+
+import '~/config/reactotron';
 import store from '~/store';
 import Routes from '~/routes';
+
 
 const App = () => (
   <Provider store={store}>

@@ -11,6 +11,7 @@
 */
 
 const User = use('App/Models/User')
+const Domain = use('App/Models/Domain')
 
 class DatabaseSeeder {
   async run () {
@@ -18,6 +19,10 @@ class DatabaseSeeder {
       name: 'Henrique Weiand',
       email: 'henriqueweiand@gmail.com',
       password: '123456'
+    })
+
+    const domain = await Domain.create({
+      name: 'Empresa teste'
     })
   }
 }

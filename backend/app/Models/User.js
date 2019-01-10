@@ -19,6 +19,8 @@ class User extends Model {
         userInstance.password = await Hash.make(userInstance.password)
       }
     })
+
+    this.addHook('afterCreate', 'UserHook.sendCreateNewUser')
   }
 
   /**
@@ -33,6 +35,10 @@ class User extends Model {
    */
   tokens () {
     return this.hasMany('App/Models/Token')
+  }
+
+  domains () {
+    return this.belongsToMany('App/Models/Domain').pivotModel('App/Models/UserDomain')
   }
 }
 
