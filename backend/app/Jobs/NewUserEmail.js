@@ -1,5 +1,7 @@
 'use strict'
 
+const Mail = use('Mail')
+
 class NewUserEmail {
   // If this getter isn't provided, it will default to 1.
   // Increase this number to increase processing concurrency.
@@ -13,10 +15,18 @@ class NewUserEmail {
   }
 
   // This is where the work is done.
-  async handle (data) {
-    console.log('NewUserEmail-job started')
+  async handle ({ user, email }) {
+    await Mail.send(
+      ['emails.newUser'],
+      { user: user.name },
+      message => {
+        message
+          .to(email)
+          .from('henriqueweiand@gmail.com', 'Henrique Weiand')
+          .subject('Teste')
+      }
+    )
   }
 }
 
 module.exports = NewUserEmail
-
