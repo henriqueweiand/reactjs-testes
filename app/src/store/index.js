@@ -11,11 +11,10 @@ const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 const createAppropriateStore = process.env.NODE_ENV === 'development' ? console.tron.createStore : createStore;
 
 const store = createAppropriateStore(
-  createRootReducer(history), // root reducer with router state
-  // false,
+  createRootReducer(history),
   compose(
     applyMiddleware(
-      routerMiddleware(history), // for dispatching history actions
+      routerMiddleware(history),
       sagaMiddleware,
     ),
   ),

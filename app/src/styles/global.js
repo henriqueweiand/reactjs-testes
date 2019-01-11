@@ -2,30 +2,26 @@ import { createGlobalStyle } from 'styled-components';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
 export default createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+    @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+    @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
     * {
-        padding: 0;
-        margin: 0;
-        outline: 0;
-        box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      outline: 0;
+      /* box-sizing: border-box; */
     }
 
     body {
-        font-family: 'Source Sans Pro', sans-serif;
-        text-rendering: optimizeLegibility !important;
-        -webkit-font-smoothing: antialiased !important;
+      padding: 0;
+      margin: 0;
+      font-family: sans-serif;
+      background: "#dfdfdf";
+      text-rendering: optimizeLegibility !important;
+      -webkit-font-smoothing: antialiased !important;
     }
 
     html, body, #root {
         height: 100%;
-    }
-
-    input {
-        font-family: 'Source Sans Pro', sans-serif;
-    }
-
-    button: {
-        cursor: pointer;
     }
 `;
