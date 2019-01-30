@@ -1,56 +1,24 @@
 'use strict'
 
-/**
- * Resourceful controller for interacting with userdomains
- */
+const UserDomain = use('App/Models/UserDomain')
+
 class UserDomainController {
-  /**
-   * Show a list of all userdomains.
-   * GET userdomains
-   */
-  async index ({ request, response, view }) {
+  async index ({ request }) {
+    const userdomain = await UserDomain.query()
+      .where('domain_id', request.domain.id)
+      .with('user')
+      .with('roles')
+      .fetch()
+
+    return userdomain
   }
 
-  /**
-   * Render a form to be used for creating a new userdomain.
-   * GET userdomains/create
-   */
-  async create ({ request, response, view }) {
-  }
+  async update ({ request, params }) {
+    const roles = request.only(['roles'])
 
-  /**
-   * Create/save a new userdomain.
-   * POST userdomains
-   */
-  async store ({ request, response }) {
-  }
+    const domainJoin = await UserDomain.find(params.id)
 
-  /**
-   * Display a single userdomain.
-   * GET userdomains/:id
-   */
-  async show ({ params, request, response, view }) {
-  }
-
-  /**
-   * Render a form to update an existing userdomain.
-   * GET userdomains/:id/edit
-   */
-  async edit ({ params, request, response, view }) {
-  }
-
-  /**
-   * Update userdomain details.
-   * PUT or PATCH userdomains/:id
-   */
-  async update ({ params, request, response }) {
-  }
-
-  /**
-   * Delete a userdomain with id.
-   * DELETE userdomains/:id
-   */
-  async destroy ({ params, request, response }) {
+    await domainJoin.roles().sync(roles)
   }
 }
 

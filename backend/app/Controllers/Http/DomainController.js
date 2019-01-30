@@ -1,5 +1,7 @@
 'use strict'
 
+const Role = use('Adonis/Acl/Role')
+
 /**
  * Resourceful controller for interacting with domains
  */
@@ -23,6 +25,15 @@ class DomainController {
     const domain = await auth.user.domains().create({
       ...data
     })
+
+    const domainJoin = await auth.user
+      .domainJoins()
+      .where('domain_id', domain.id)
+      .first()
+
+    const admin = await Role.findBy('slug', 'administrador')
+
+    await domainJoin.roles().attach([admin.id])
 
     return domain
   }

@@ -12,10 +12,6 @@ class UserController {
 
     await user.domains().attach(domain)
   }
-
-  async teste ({ request, response }) {
-    return request.domain
-  }
 }
 
 module.exports = UserController

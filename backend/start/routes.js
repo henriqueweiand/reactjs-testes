@@ -1,37 +1,27 @@
 'use strict'
 
-/*
-|--------------------------------------------------------------------------
-| Routes
-|--------------------------------------------------------------------------
-|
-| Http routes are entry points to your web application. You can create
-| routes for different URLs and bind Controller actions to them.
-|
-| A complete guide on routing is available here.
-| http://adonisjs.com/docs/4.0/routing
-|
-*/
-
-/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
 Route.get('/', () => {
   return { greeting: 'Hello henrique in JSON' }
 })
 
-Route.post('sessions', 'SessionController.store')
-Route.post('users', 'UserController.store')
+Route.post('sessions', 'SessionController.store').validator('Session')
+Route.post('users', 'UserController.store').validator('User')
 
 Route.group(() => {
+  Route.get('roles', 'RoleController.index')
+
   Route.get('domains', 'DomainController.index')
   Route.get('domains/:id', 'DomainController.show')
-  Route.post('domains', 'DomainController.store').middleware(['can:empresa_create'])
-  Route.put('domains', 'DomainController.update').middleware(['can:empresa_edit'])
-  Route.delete('domains', 'DomainController.destroy').middleware(['can:empresa_delete'])
+  Route.post('domains', 'DomainController.store').validator('Domain').middleware(['domain', 'can:empresa_create'])
+  Route.put('domains/:id', 'DomainController.update').validator('Domain').middleware(['domain', 'can:empresa_edit'])
+  Route.delete('domains/:id', 'DomainController.destroy').middleware(['domain', 'can:empresa_delete'])
 }).middleware(['auth']
 )
 
 Route.group(() => {
-  Route.get('users', 'UserController.teste')
+  Route.get('permissions', 'PermissionController.show')
+  Route.get('user_domain', 'UserDomainController.index')
+  Route.put('user_domain/:id', 'UserDomainController.update').middleware('is:administrador')
 }).middleware(['auth', 'domain'])
