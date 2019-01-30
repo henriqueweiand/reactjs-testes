@@ -23,22 +23,40 @@ class User extends Model {
     this.addHook('afterCreate', 'UserHook.sendCreateNewUser')
   }
 
-  /**
-   * A relationship on tokens is required for auth to
-   * work. Since features like `refreshTokens` or
-   * `rememberToken` will be saved inside the
-   * tokens table.
-   *
-   * @method tokens
-   *
-   * @return {Object}
-   */
+  domainJoins () {
+    return this.hasMany('App/Models/UserDomain')
+  }
+
   tokens () {
     return this.hasMany('App/Models/Token')
   }
 
   domains () {
     return this.belongsToMany('App/Models/Domain').pivotModel('App/Models/UserDomain')
+  }
+
+  async is (expression) {
+    const domain = await this.domainJoins()
+      .where('domain_id', this.currentDomain)
+      .first()
+
+    return domain.is(expression)
+  }
+
+  async can (expression) {
+    const domain = await this.domainJoins()
+      .where('domain_id', this.currentDomain)
+      .first()
+
+    return domain.can(expression)
+  }
+
+  async scope (required) {
+    const domain = await this.domainJoins()
+      .where('domain_id', this.currentDomain)
+      .first()
+
+    return domain.scope(required)
   }
 }
 

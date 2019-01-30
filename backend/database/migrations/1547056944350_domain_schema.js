@@ -7,6 +7,14 @@ class DomainSchema extends Schema {
     this.create('domains', (table) => {
       table.increments()
       table.string('name', 254).notNullable()
+      // table
+      //   .integer('user_id')
+      //   .unsigned()
+      //   .notNullable()
+      //   .references('id')
+      //   .inTable('users')
+      //   .onUpdate('CASCADE')
+      //   .onDelete('CASCADE')
       table.timestamps()
     })
   }
