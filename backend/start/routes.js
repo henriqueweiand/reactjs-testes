@@ -24,8 +24,13 @@ Route.post('sessions', 'SessionController.store')
 Route.post('users', 'UserController.store')
 
 Route.group(() => {
-  Route.resource('domains', 'DomainController').apiOnly()
-}).middleware('auth')
+  Route.get('domains', 'DomainController.index')
+  Route.get('domains/:id', 'DomainController.show')
+  Route.post('domains', 'DomainController.store').middleware(['can:empresa_create'])
+  Route.put('domains', 'DomainController.update').middleware(['can:empresa_edit'])
+  Route.delete('domains', 'DomainController.destroy').middleware(['can:empresa_delete'])
+}).middleware(['auth']
+)
 
 Route.group(() => {
   Route.get('users', 'UserController.teste')

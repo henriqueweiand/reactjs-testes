@@ -29,13 +29,18 @@ class DatabaseSeeder {
       name: 'Criar empresa'
     })
 
+    const deleteEmpresa = await Permission.create({
+      slug: 'empresa_delete',
+      name: 'Deletar empresa'
+    })
+
     const editEmpresa = await Permission.create({
       slug: 'empresa_edit',
       name: 'Editar empresa'
     })
 
     const admin = await Role.create({
-      slug: 'adinistrador',
+      slug: 'administrador',
       name: 'Administrador'
     })
 
@@ -44,7 +49,7 @@ class DatabaseSeeder {
       name: 'Empresa'
     })
 
-    await admin.permissions().attach([createEmpresa.id, editEmpresa.id])
+    await admin.permissions().attach([createEmpresa.id, editEmpresa.id, deleteEmpresa.id])
     await empresa.permissions().attach([editEmpresa.id])
 
     const domain = await user.domains().create({
