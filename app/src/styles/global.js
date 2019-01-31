@@ -11,16 +11,16 @@ export default createGlobalStyle`
       /* box-sizing: border-box; */
     }
 
-    body {
+    /* body {
       padding: 0;
       margin: 0;
       font-family: sans-serif;
       background: "#dfdfdf";
       text-rendering: optimizeLegibility !important;
       -webkit-font-smoothing: antialiased !important;
-    }
+    } */
 
-    html, body, #root {
-        height: 100%;
-    }
+    /* html, body, #root {
+      height: 100%;
+    } */
 `;

@@ -12,13 +12,13 @@ export default Creators;
 
 /* Initial State */
 export const INITIAL_STATE = Immutable({
-  signedIn: !!localStorage.getItem('@sistema:token'),
-  token: localStorage.getItem('@sistema:token') || null,
+  signedIn: false,
+  token: false,
   loading: false,
 });
 
 /* Reducers */
-export const success = (state, { token }) => state.merge({ signedIn: true, token });
+export const success = (state, { token }) => ({ ...state, signedIn: true, token });
 
 /* Reducers to types */
 export const reducer = createReducer(INITIAL_STATE, {

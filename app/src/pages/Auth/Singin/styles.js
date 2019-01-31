@@ -1,14 +1,6 @@
 const styles = () => ({
-  root: {
-    flexGrow: 1,
-    height: '100vh',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cardContent: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    maxWidth: 400,
+  form: {
+    width: '100%', // Fix IE 11 issue.
   },
 });
 
