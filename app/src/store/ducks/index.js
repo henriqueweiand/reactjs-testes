@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
-import { reducer as auth } from './auth';
-import { reducer as snackbar } from './snackbar';
+import auth from './auth';
+import snackbar from './snackbar';
 
 export default history => combineReducers({
   auth,

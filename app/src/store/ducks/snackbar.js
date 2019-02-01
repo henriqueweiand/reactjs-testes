@@ -1,30 +1,32 @@
-import { createReducer, createActions } from 'reduxsauce';
-import Immutable from 'seamless-immutable';
+export const Types = {
+  SET: 'snackbar/SET',
+  HIDE: 'snackbar/HIDE',
+};
 
-/* Types & Action Creators */
-const { Types, Creators } = createActions({
-  setMessage: ['type', 'message'],
-  setHide: [],
-});
-
-export const SnackbarTypes = Types;
-export default Creators;
-
-/* Initial State */
-export const INITIAL_STATE = Immutable({
+const INITIAL_STATE = {
   visible: false,
   type: '',
   message: '',
-});
+};
 
-/* Reducers */
-export const set = (state, { type, message }) => ({
-  ...state, visible: true, type, message,
-});
-export const hide = state => ({ ...state, visible: false });
+export default function snackbar(state = INITIAL_STATE, action) {
+  switch (action.type) {
+    case Types.SET:
+      return { ...state, visible: true, ...action.payload };
+    case Types.HIDE:
+      return { ...state, visible: false };
+    default:
+      return state;
+  }
+}
 
-/* Reducers to types */
-export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SET_MESSAGE]: set,
-  [Types.SET_HIDE]: hide,
-});
+export const Creators = {
+  setMessage: (type, message) => ({
+    type: Types.SET,
+    payload: { type, message },
+  }),
+
+  hideSnackbar: () => ({
+    type: Types.HIDE,
+  }),
+};

@@ -18,7 +18,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 
-import Creators from '~/store/ducks/auth';
+import { Creators as AuthActions } from '~/store/ducks/auth';
 
 import styles from './styles';
 
@@ -118,7 +118,7 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(Creators, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ ...AuthActions }, dispatch);
 
 export default compose(
   connect(

@@ -10,13 +10,13 @@ import SnackbarMaterial from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-import SnackbarActions from '~/store/ducks/snackbar';
+import { Creators as SnackbarActions } from '~/store/ducks/snackbar';
 import styles from './styles';
 
 class Snackbar extends Component {
   handleClose = () => {
-    const { setHide } = this.props;
-    setHide();
+    const { hideSnackbar } = this.props;
+    hideSnackbar();
   };
 
   render() {
@@ -60,7 +60,7 @@ const mapStateToProps = state => ({
   snackbar: state.snackbar,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(SnackbarActions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ ...SnackbarActions }, dispatch);
 
 export default compose(
   withStyles(styles, { withTheme: true }),
