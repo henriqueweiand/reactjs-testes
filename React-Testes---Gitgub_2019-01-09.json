@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2019-02-01T17:09:08.177Z",
+	"__export_date": "2019-02-04T17:30:31.829Z",
 	"__export_source": "insomnia.desktop.app:v6.3.2",
 	"resources": [
 		{
@@ -100,6 +100,72 @@
 			"metaSortKey": -1548872028723,
 			"modified": 1548872028723,
 			"name": "Permission",
+			"parentId": "wrk_f7d93f3348c640c28b40cc91725ff276",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_4608202f722a403fab1473473a46ef9e",
+			"created": 1549287286209,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1547045071752.5,
+			"modified": 1549287298477,
+			"name": "Lesson",
+			"parentId": "wrk_f7d93f3348c640c28b40cc91725ff276",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_f340b5c846c246fea7f79051617e20e5",
+			"created": 1549296166201,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1547037975572.25,
+			"modified": 1549296173097,
+			"name": "Task",
+			"parentId": "wrk_f7d93f3348c640c28b40cc91725ff276",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_e8fe1f81c8b8439dbd23d3e096ca0624",
+			"created": 1549297810770,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1547034427482.125,
+			"modified": 1549297816837,
+			"name": "Option",
+			"parentId": "wrk_f7d93f3348c640c28b40cc91725ff276",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_caeec694e38847b098446ea855b18181",
+			"created": 1549299361495,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1549299361495,
+			"modified": 1549299361495,
+			"name": "Lesson/Task",
+			"parentId": "wrk_f7d93f3348c640c28b40cc91725ff276",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_eaf2058407ef432ba3b862bfd7b51877",
+			"created": 1549299989346,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1549171563613,
+			"modified": 1549300002315,
+			"name": "Task/Option",
+			"parentId": "wrk_f7d93f3348c640c28b40cc91725ff276",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_496f8e941c3b4e478e7943dd9018f40c",
+			"created": 1549301197725,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1549107664672,
+			"modified": 1549301206283,
+			"name": "Task/Option/Option",
 			"parentId": "wrk_f7d93f3348c640c28b40cc91725ff276",
 			"_type": "request_group"
 		},
@@ -548,6 +614,840 @@
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
 			"url": "{{domain}}/permissions",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6ec56d0684f840c8b9738a406153b859",
+			"authentication": {
+				"prefix": "",
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549287286222,
+			"description": "",
+			"headers": [
+				{
+					"disabled": true,
+					"id": "pair_ce47503fea6b48dba1f40484d05427b7",
+					"name": "domain",
+					"value": "1"
+				},
+				{
+					"id": "pair_3e112ef1513a4aad87b522a0ead89a7f",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547059272976,
+			"method": "GET",
+			"modified": 1549288188911,
+			"name": "index",
+			"parameters": [],
+			"parentId": "fld_4608202f722a403fab1473473a46ef9e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/lesson",
+			"_type": "request"
+		},
+		{
+			"_id": "req_62f40ec008954f86933f7ab35003bda4",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\": \"Lição inicial\",\n\t\"description\": \"Essa é a primeira lição cadastrada\",\n\t\"color\": \"#dedede\"\n}"
+			},
+			"created": 1549287286232,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"disabled": false,
+					"id": "pair_4d914226cc3940ab8105ed60979e13ec",
+					"name": "domain",
+					"value": "1"
+				},
+				{
+					"id": "pair_c33951eb836b4340a2c8bef728eea32f",
+					"name": "Accept",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547045076159,
+			"method": "POST",
+			"modified": 1549288180202,
+			"name": "Create",
+			"parameters": [],
+			"parentId": "fld_4608202f722a403fab1473473a46ef9e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/lesson",
+			"_type": "request"
+		},
+		{
+			"_id": "req_81b748c16b3240b78518e7a07be37701",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\": \"Lição inicial2\",\n\t\"description\": \"Essa é a primeira lição cadastrada\",\n\t\"color\": \"#dedede\"\n}"
+			},
+			"created": 1549287286243,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_b96b626d76314b34b3eea1243d08371c",
+					"name": "Accept",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_3810d3e0063347f38b089774e7327166",
+					"name": "domain",
+					"value": "1"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547037977750.5,
+			"method": "PUT",
+			"modified": 1549289469497,
+			"name": "Put",
+			"parameters": [],
+			"parentId": "fld_4608202f722a403fab1473473a46ef9e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/lesson/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7f484f82a93e4d7fbc8a774e2de997b4",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549287286257,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_b8b87bb214a243fc85c68bdf98667ce9",
+					"name": "domain",
+					"value": "1"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547034428546.25,
+			"method": "DELETE",
+			"modified": 1549289482970,
+			"name": "Delete",
+			"parameters": [],
+			"parentId": "fld_4608202f722a403fab1473473a46ef9e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/lesson/2",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3a5d154612ab4671be2e3c7352daea56",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549287286274,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547052174567.5,
+			"method": "GET",
+			"modified": 1549289115778,
+			"name": "Show",
+			"parameters": [],
+			"parentId": "fld_4608202f722a403fab1473473a46ef9e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/lesson/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_cf94bbe27a35447393d6b0aa6e0c2ff3",
+			"authentication": {
+				"prefix": "",
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549296166204,
+			"description": "",
+			"headers": [
+				{
+					"disabled": true,
+					"id": "pair_ce47503fea6b48dba1f40484d05427b7",
+					"name": "domain",
+					"value": "1"
+				},
+				{
+					"id": "pair_3e112ef1513a4aad87b522a0ead89a7f",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547059272976,
+			"method": "GET",
+			"modified": 1549296178373,
+			"name": "index",
+			"parameters": [],
+			"parentId": "fld_f340b5c846c246fea7f79051617e20e5",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/task",
+			"_type": "request"
+		},
+		{
+			"_id": "req_5e24245a93934a7da42c2697ab95e78d",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\": \"Task inicial2\",\n\t\"description\": \"Essa é a primeira task cadastrada\",\n\t\"lesson_id\": 1,\n\t\"type\": \"option\"\n}"
+			},
+			"created": 1549296166207,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"disabled": false,
+					"id": "pair_4d914226cc3940ab8105ed60979e13ec",
+					"name": "domain",
+					"value": "1"
+				},
+				{
+					"id": "pair_c33951eb836b4340a2c8bef728eea32f",
+					"name": "Accept",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547045076159,
+			"method": "POST",
+			"modified": 1549297795969,
+			"name": "Create",
+			"parameters": [],
+			"parentId": "fld_f340b5c846c246fea7f79051617e20e5",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/task",
+			"_type": "request"
+		},
+		{
+			"_id": "req_af1becb1734849658163fd548a9c8662",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\": \"Task inicial2\",\n\t\"description\": \"Essa é a primeira task cadastrada\",\n\t\"lesson_id\": 1,\n\t\"type\": \"option\"\n}"
+			},
+			"created": 1549296166210,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_b96b626d76314b34b3eea1243d08371c",
+					"name": "Accept",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_3810d3e0063347f38b089774e7327166",
+					"name": "domain",
+					"value": "1"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547037977750.5,
+			"method": "PUT",
+			"modified": 1549297785532,
+			"name": "Put",
+			"parameters": [],
+			"parentId": "fld_f340b5c846c246fea7f79051617e20e5",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/task/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7127d5205f9847969cbe538e37ffdc2e",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549296166212,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_b8b87bb214a243fc85c68bdf98667ce9",
+					"name": "domain",
+					"value": "1"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547034428546.25,
+			"method": "DELETE",
+			"modified": 1549296189286,
+			"name": "Delete",
+			"parameters": [],
+			"parentId": "fld_f340b5c846c246fea7f79051617e20e5",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/task/2",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f2401db99f5847e3be695fb38d4aa92e",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549296166215,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547052174567.5,
+			"method": "GET",
+			"modified": 1549296181647,
+			"name": "Show",
+			"parameters": [],
+			"parentId": "fld_f340b5c846c246fea7f79051617e20e5",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/task/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_daac4855db8841fc94e7cf6e2564a0c8",
+			"authentication": {
+				"prefix": "",
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549297810773,
+			"description": "",
+			"headers": [
+				{
+					"disabled": true,
+					"id": "pair_ce47503fea6b48dba1f40484d05427b7",
+					"name": "domain",
+					"value": "1"
+				},
+				{
+					"id": "pair_3e112ef1513a4aad87b522a0ead89a7f",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547059272976,
+			"method": "GET",
+			"modified": 1549297824072,
+			"name": "index",
+			"parameters": [],
+			"parentId": "fld_e8fe1f81c8b8439dbd23d3e096ca0624",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/option",
+			"_type": "request"
+		},
+		{
+			"_id": "req_0de7d8b9d56a4dbbb8a03d449a926ad1",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\": \"Opcao DOIS\",\n\t\"task_id\": 1,\n\t\"type\": \"RIGHT\"\n}"
+			},
+			"created": 1549297810777,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"disabled": false,
+					"id": "pair_4d914226cc3940ab8105ed60979e13ec",
+					"name": "domain",
+					"value": "1"
+				},
+				{
+					"id": "pair_c33951eb836b4340a2c8bef728eea32f",
+					"name": "Accept",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547045076159,
+			"method": "POST",
+			"modified": 1549298127221,
+			"name": "Create",
+			"parameters": [],
+			"parentId": "fld_e8fe1f81c8b8439dbd23d3e096ca0624",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/option",
+			"_type": "request"
+		},
+		{
+			"_id": "req_5ae506de0ee7423d997485d9941477d2",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\": \"Task inicial2\",\n\t\"description\": \"Essa é a primeira task cadastrada\",\n\t\"lesson_id\": 1,\n\t\"type\": \"option\"\n}"
+			},
+			"created": 1549297810783,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_b96b626d76314b34b3eea1243d08371c",
+					"name": "Accept",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_3810d3e0063347f38b089774e7327166",
+					"name": "domain",
+					"value": "1"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547037977750.5,
+			"method": "PUT",
+			"modified": 1549297834105,
+			"name": "Put",
+			"parameters": [],
+			"parentId": "fld_e8fe1f81c8b8439dbd23d3e096ca0624",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/option/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_01fa61c391ba4260b4dd20cb06f2f9b1",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549297810786,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_b8b87bb214a243fc85c68bdf98667ce9",
+					"name": "domain",
+					"value": "1"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547034428546.25,
+			"method": "DELETE",
+			"modified": 1549297836593,
+			"name": "Delete",
+			"parameters": [],
+			"parentId": "fld_e8fe1f81c8b8439dbd23d3e096ca0624",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/option/2",
+			"_type": "request"
+		},
+		{
+			"_id": "req_18a9edd9f526423fb60c286a6ad3a1c4",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549297810789,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7ba4c1b4aeb0423fa0654537c643589e",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547052174567.5,
+			"method": "GET",
+			"modified": 1549297828765,
+			"name": "Show",
+			"parameters": [],
+			"parentId": "fld_e8fe1f81c8b8439dbd23d3e096ca0624",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{domain}}/option/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_72f6a22024a54e139b8b3d9200d43b5a",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549299366956,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_49a0a01ae14d4bfc97a635c422917d56",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1549085695109,
+			"method": "GET",
+			"modified": 1549299427716,
+			"name": "index",
+			"parameters": [],
+			"parentId": "fld_caeec694e38847b098446ea855b18181",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ domain  }}/lesson/task",
+			"_type": "request"
+		},
+		{
+			"_id": "req_0db487d8e4fc460cbccb03375ece6acd",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549299377588,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_f9922387b0044065b4845567afdd65de",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1549085695059,
+			"method": "GET",
+			"modified": 1549299985885,
+			"name": "show",
+			"parameters": [],
+			"parentId": "fld_caeec694e38847b098446ea855b18181",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ domain  }}/lesson/1/task",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6e1a78049ce64d05b2978142d99bc5ab",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549299989351,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_49a0a01ae14d4bfc97a635c422917d56",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1549085695109,
+			"method": "GET",
+			"modified": 1549301192280,
+			"name": "index",
+			"parameters": [],
+			"parentId": "fld_eaf2058407ef432ba3b862bfd7b51877",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ domain  }}/task/option",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2f8feabdbec9476fa68c238464594fe3",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549299989355,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_f9922387b0044065b4845567afdd65de",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1549085695059,
+			"method": "GET",
+			"modified": 1549300017152,
+			"name": "show",
+			"parameters": [],
+			"parentId": "fld_eaf2058407ef432ba3b862bfd7b51877",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ domain  }}/task/1/option",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f60627a5316a4803841948b24cce41e0",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549301197729,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_49a0a01ae14d4bfc97a635c422917d56",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1549085695109,
+			"method": "GET",
+			"modified": 1549301228108,
+			"name": "index",
+			"parameters": [],
+			"parentId": "fld_496f8e941c3b4e478e7943dd9018f40c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ domain  }}/lesson/task/option",
+			"_type": "request"
+		},
+		{
+			"_id": "req_e20e20a2437a4ac0a3d7a8976b9c9478",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{}"
+			},
+			"created": 1549301197731,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_f9922387b0044065b4845567afdd65de",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1549085695059,
+			"method": "GET",
+			"modified": 1549301215697,
+			"name": "show",
+			"parameters": [],
+			"parentId": "fld_496f8e941c3b4e478e7943dd9018f40c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ domain  }}/lesson/task/1/option",
 			"_type": "request"
 		}
 	]

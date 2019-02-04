@@ -10,7 +10,7 @@ class LessonController {
    * Show a list of all tasks.
    * GET tasks
    */
-  async index ({ request }) {
+  async index () {
     const lesson = await Lesson.all()
 
     return lesson

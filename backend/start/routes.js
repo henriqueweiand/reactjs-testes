@@ -10,6 +10,9 @@ Route.post('sessions', 'SessionController.store').validator('Session')
 Route.post('users', 'UserController.store').validator('User')
 
 Route.group(() => {
+  Route.get('lesson/task/option', 'LessonTaskOptionController.index')
+  Route.get('lesson/:id/task/option', 'LessonTaskOptionController.show')
+
   Route.get('lesson/task', 'LessonTaskController.index')
   Route.get('lesson/:id/task', 'LessonTaskController.show')
 

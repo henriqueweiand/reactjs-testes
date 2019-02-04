@@ -19,7 +19,7 @@ class LessonTaskController {
     return lesson
   }
 
-  async show ({ params, request }) {
+  async show ({ params }) {
     const lesson = await Lesson
       .query()
       .where('id', params.id)
