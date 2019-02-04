@@ -12,6 +12,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
+
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
@@ -24,7 +25,6 @@ import styles from './styles';
 
 class Singin extends Component {
   static propTypes = {
-    submitForm: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     isSubmitting: PropTypes.bool.isRequired,
@@ -47,7 +47,7 @@ class Singin extends Component {
 
   render() {
     const {
-      classes, auth, handleSubmit, submitForm, handleChange, errors,
+      classes, auth, handleSubmit, handleChange, errors,
       isSubmitting,
     } = this.props;
 
@@ -64,6 +64,7 @@ class Singin extends Component {
             className={classes.form}
             onSubmit={handleSubmit}
           >
+            {auth.loading ? <LinearProgress /> : ''}
             <CardContent>
               <FormControl
                 margin="normal"
@@ -103,7 +104,7 @@ class Singin extends Component {
                 size="small"
                 disabled={isSubmitting}
               >
-                {auth.loading ? <LinearProgress /> : 'Login'}
+                Login
               </Button>
             </CardActions>
 

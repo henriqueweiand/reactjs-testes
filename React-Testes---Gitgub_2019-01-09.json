@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2019-01-30T18:22:39.687Z",
+	"__export_date": "2019-02-01T17:09:08.177Z",
 	"__export_source": "insomnia.desktop.app:v6.3.2",
 	"resources": [
 		{
@@ -143,6 +143,7 @@
 		{
 			"_id": "req_8b744bdf68f541c88da8195dcc344902",
 			"authentication": {
+				"prefix": "",
 				"token": "{{ token  }}",
 				"type": "bearer"
 			},
@@ -155,12 +156,17 @@
 					"id": "pair_ce47503fea6b48dba1f40484d05427b7",
 					"name": "domain",
 					"value": "1"
+				},
+				{
+					"id": "pair_f6429eae1017460ab4dbc12217704eb8",
+					"name": "refresh_token",
+					"value": "9d4aceefabdd3175a875732d8ff4e30crYiqngIVJSv8M0vj5ZgVJdnZM7mUxi0KfWOlHVkZAvT3eZHOj4FeOH0uuS7zt8f1"
 				}
 			],
 			"isPrivate": false,
 			"metaSortKey": -1547059272976,
 			"method": "GET",
-			"modified": 1548870308822,
+			"modified": 1548952598409,
 			"name": "index",
 			"parameters": [],
 			"parentId": "fld_d47cc87b5f734368bca7dffee70b59ba",

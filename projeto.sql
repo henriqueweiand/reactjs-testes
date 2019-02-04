@@ -11,7 +11,7 @@
  Target Server Version : 50722
  File Encoding         : utf-8
 
- Date: 01/30/2019 14:36:20 PM
+ Date: 02/04/2019 15:07:52 PM
 */
 
 SET NAMES utf8mb4;
@@ -27,13 +27,13 @@ CREATE TABLE `adonis_schema` (
   `batch` int(11) DEFAULT NULL,
   `migration_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `adonis_schema`
 -- ----------------------------
 BEGIN;
-INSERT INTO `adonis_schema` VALUES ('41', '1503250034279_user', '1', '2019-01-30 16:31:44'), ('42', '1503250034280_token', '1', '2019-01-30 16:31:44'), ('43', '1547056944350_domain_schema', '1', '2019-01-30 16:31:44'), ('44', '1547058253609_user_domain_schema', '1', '2019-01-30 16:31:44'), ('45', '1548857539728_create_permissions_table', '1', '2019-01-30 16:31:44'), ('46', '1548857539749_create_roles_table', '1', '2019-01-30 16:31:44'), ('47', '1548857539759_create_permission_role_table', '1', '2019-01-30 16:31:45'), ('48', '1548857539761_create_permission_user_table', '1', '2019-01-30 16:31:45'), ('49', '1548857539763_create_role_user_table', '1', '2019-01-30 16:31:45');
+INSERT INTO `adonis_schema` VALUES ('68', '1503250034279_user', '1', '2019-02-04 13:06:24'), ('69', '1503250034280_token', '1', '2019-02-04 13:06:25'), ('70', '1547056944350_domain_schema', '1', '2019-02-04 13:06:25'), ('71', '1547058253609_user_domain_schema', '1', '2019-02-04 13:06:25'), ('72', '1548857539728_create_permissions_table', '1', '2019-02-04 13:06:26'), ('73', '1548857539749_create_roles_table', '1', '2019-02-04 13:06:26'), ('74', '1548857539759_create_permission_role_table', '1', '2019-02-04 13:06:27'), ('75', '1548857539761_create_permission_user_table', '1', '2019-02-04 13:06:29'), ('76', '1548857539763_create_role_user_table', '1', '2019-02-04 13:06:30'), ('77', '1549284546367_lesson_schema', '1', '2019-02-04 13:06:30'), ('78', '1549284592625_task_schema', '1', '2019-02-04 13:06:30'), ('79', '1549284600030_option_schema', '1', '2019-02-04 13:06:31');
 COMMIT;
 
 -- ----------------------------
@@ -52,7 +52,56 @@ CREATE TABLE `domains` (
 --  Records of `domains`
 -- ----------------------------
 BEGIN;
-INSERT INTO `domains` VALUES ('1', 'WeRide', '2019-01-30 14:31:50', '2019-01-30 14:31:50');
+INSERT INTO `domains` VALUES ('1', 'WeRide', '2019-02-04 11:07:40', '2019-02-04 11:07:40');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `lessons`
+-- ----------------------------
+DROP TABLE IF EXISTS `lessons`;
+CREATE TABLE `lessons` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `color` text NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `domain_id` int(10) unsigned NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `lessons_domain_id_foreign` (`domain_id`),
+  CONSTRAINT `lessons_domain_id_foreign` FOREIGN KEY (`domain_id`) REFERENCES `domains` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `lessons`
+-- ----------------------------
+BEGIN;
+INSERT INTO `lessons` VALUES ('1', 'Lição inicial2', 'Essa é a primeira lição cadastrada', '#dedede', null, null, '1', '2019-02-04 14:04:24', '2019-02-04 14:11:10');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `options`
+-- ----------------------------
+DROP TABLE IF EXISTS `options`;
+CREATE TABLE `options` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `type` enum('right','wrong') DEFAULT 'wrong',
+  `task_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `options_task_id_foreign` (`task_id`),
+  CONSTRAINT `options_task_id_foreign` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `options`
+-- ----------------------------
+BEGIN;
+INSERT INTO `options` VALUES ('1', '2019-02-04 16:34:51', '2019-02-04 16:34:51', 'Opcao inicial', 'wrong', '1'), ('2', '2019-02-04 16:35:28', '2019-02-04 16:35:28', 'Opcao DOIS', 'right', '1');
 COMMIT;
 
 -- ----------------------------
@@ -70,13 +119,13 @@ CREATE TABLE `permission_role` (
   KEY `permission_role_role_id_index` (`role_id`),
   CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
   CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `permission_role`
 -- ----------------------------
 BEGIN;
-INSERT INTO `permission_role` VALUES ('1', '1', '1', null, null), ('2', '2', '1', null, null), ('3', '2', '2', null, null);
+INSERT INTO `permission_role` VALUES ('1', '1', '1', null, null), ('2', '3', '1', null, null), ('3', '2', '1', null, null), ('4', '3', '2', null, null);
 COMMIT;
 
 -- ----------------------------
@@ -110,13 +159,13 @@ CREATE TABLE `permissions` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `permissions_slug_unique` (`slug`),
   UNIQUE KEY `permissions_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `permissions`
 -- ----------------------------
 BEGIN;
-INSERT INTO `permissions` VALUES ('1', 'empresa_create', 'Criar empresa', null, '2019-01-30 14:31:50', '2019-01-30 14:31:50'), ('2', 'empresa_edit', 'Editar empresa', null, '2019-01-30 14:31:50', '2019-01-30 14:31:50');
+INSERT INTO `permissions` VALUES ('1', 'empresa_create', 'Criar empresa', null, '2019-02-04 11:07:40', '2019-02-04 11:07:40'), ('2', 'empresa_delete', 'Deletar empresa', null, '2019-02-04 11:07:40', '2019-02-04 11:07:40'), ('3', 'empresa_edit', 'Editar empresa', null, '2019-02-04 11:07:40', '2019-02-04 11:07:40');
 COMMIT;
 
 -- ----------------------------
@@ -163,7 +212,31 @@ CREATE TABLE `roles` (
 --  Records of `roles`
 -- ----------------------------
 BEGIN;
-INSERT INTO `roles` VALUES ('1', 'adinistrador', 'Administrador', null, '2019-01-30 14:31:50', '2019-01-30 14:31:50'), ('2', 'empresa', 'Empresa', null, '2019-01-30 14:31:50', '2019-01-30 14:31:50');
+INSERT INTO `roles` VALUES ('1', 'administrador', 'Administrador', null, '2019-02-04 11:07:40', '2019-02-04 11:07:40'), ('2', 'empresa', 'Empresa', null, '2019-02-04 11:07:40', '2019-02-04 11:07:40');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `tasks`
+-- ----------------------------
+DROP TABLE IF EXISTS `tasks`;
+CREATE TABLE `tasks` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` text,
+  `type` enum('option','selection') DEFAULT NULL,
+  `lesson_id` int(10) unsigned NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tasks_lesson_id_foreign` (`lesson_id`),
+  CONSTRAINT `tasks_lesson_id_foreign` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `tasks`
+-- ----------------------------
+BEGIN;
+INSERT INTO `tasks` VALUES ('1', 'Task inicial2', 'Essa é a primeira task cadastrada', 'option', '1', '2019-02-04 16:25:46', '2019-02-04 16:29:47');
 COMMIT;
 
 -- ----------------------------
@@ -206,7 +279,7 @@ CREATE TABLE `user_domains` (
 --  Records of `user_domains`
 -- ----------------------------
 BEGIN;
-INSERT INTO `user_domains` VALUES ('1', '1', '1', '2019-01-30 14:31:50', '2019-01-30 14:31:50');
+INSERT INTO `user_domains` VALUES ('1', '1', '1', '2019-02-04 11:07:40', '2019-02-04 11:07:40');
 COMMIT;
 
 -- ----------------------------
@@ -228,7 +301,7 @@ CREATE TABLE `users` (
 --  Records of `users`
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES ('1', 'Henrique Weiand', 'henriqueweiand@gmail.com', '$2a$10$Cort4eftG7ppHDr6awlMj.3rp73mE8PTie6C1UYQFjnwcGmSqvtoC', '2019-01-30 14:31:49', '2019-01-30 14:31:49');
+INSERT INTO `users` VALUES ('1', 'Henrique Weiand', 'henriqueweiand@gmail.com', '$2a$10$yXvI4.Gkyl2I/jE6qG1pW.jpKjAABdhTyvDNpTVYIPvXf3VQi9z5m', '2019-02-04 11:07:39', '2019-02-04 11:07:39');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

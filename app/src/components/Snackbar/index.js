@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
@@ -14,6 +14,15 @@ import { Creators as SnackbarActions } from '~/store/ducks/snackbar';
 import styles from './styles';
 
 class Snackbar extends Component {
+  static propTypes = {
+    hideSnackbar: PropTypes.func.isRequired,
+    classes: PropTypes.shape({}).isRequired,
+    snackbar: PropTypes.shape({
+      visible: PropTypes.bool,
+      message: PropTypes.string,
+    }).isRequired,
+  };
+
   handleClose = () => {
     const { hideSnackbar } = this.props;
     hideSnackbar();
@@ -25,13 +34,11 @@ class Snackbar extends Component {
     return (
       <Fragment>
         <SnackbarMaterial
-          // className={classNames(className, classes[this.props.snackbar.type])}
           open={visible}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'left',
           }}
-          // variant={snackbar.type}
           variant="error"
           autoHideDuration={6000}
           onClose={this.handleClose}

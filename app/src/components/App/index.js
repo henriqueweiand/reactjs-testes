@@ -11,21 +11,27 @@ import { store, persistor } from '~/store';
 
 import GlobalStyle from '~/styles/global';
 import Snackbar from '~/components/Snackbar';
+import Layout from '~/components/Layout';
 import { Wrapper } from './styles';
 
-// persistor.purge();
+persistor.purge();
 
 const App = () => (
   <Provider store={store}>
     <PersistGate loading={<p>Loading</p>} persistor={persistor}>
       <CssBaseline />
-      <GlobalStyle />
+
+      <Layout>
+        component main
+      </Layout>
+
+      {/* <GlobalStyle />
       <Snackbar />
       <BrowserRouter>
         <Wrapper>
           <Routes />
         </Wrapper>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </PersistGate>
   </Provider>
 );

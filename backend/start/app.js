@@ -10,6 +10,7 @@
 | provider here.
 |
 */
+const path = use('path')
 const providers = [
   '@adonisjs/framework/providers/AppProvider',
   '@adonisjs/auth/providers/AuthProvider',
@@ -21,6 +22,7 @@ const providers = [
   '@adonisjs/mail/providers/MailProvider',
   '@adonisjs/framework/providers/ViewProvider',
   'adonis-acl/providers/AclProvider',
+  path.join(__dirname, '..', 'providers', 'ExistsRuleProvider'),
   '@adonisjs/validator/providers/ValidatorProvider'
 ]
 
