@@ -12,6 +12,9 @@
 
 const User = use('App/Models/User')
 const Domain = use('App/Models/Domain')
+const Lesson = use('App/Models/Lesson')
+const Task = use('App/Models/Task')
+const Option = use('App/Models/Option')
 
 const Role = use('Adonis/Acl/Role')
 const Permission = use('Adonis/Acl/Permission')
@@ -59,6 +62,33 @@ class DatabaseSeeder {
     const domainJoin = await user.domainJoins().where('domain_id', domain.id).first()
 
     await domainJoin.roles().attach([admin.id])
+
+    // Licoes
+    const lesson = await Lesson.create({
+      title: 'Lição inicial',
+      description: 'Essa é a primeira lição cadastrada',
+      color: '#dedede',
+      domain_id: domain.id
+    })
+
+    const task = await Task.create({
+      title: 'Task inicial',
+      description: 'Essa é a primeira task cadastrada',
+      type: 'option',
+      lesson_id: lesson.id
+    })
+
+    const option = await Option.create({
+      title: 'Opcao um',
+      type: 'right',
+      task_id: task.id
+    })
+
+    const option2 = await Option.create({
+      title: 'Opcao dois',
+      type: 'wrong',
+      task_id: task.id
+    })
   }
 }
 

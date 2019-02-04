@@ -11,7 +11,10 @@ class LessonController {
    * GET tasks
    */
   async index () {
-    const lesson = await Lesson.all()
+    const lesson = await Lesson
+      .query()
+      .with('domain')
+      .fetch()
 
     return lesson
   }
@@ -35,7 +38,11 @@ class LessonController {
    * GET tasks/:id
    */
   async show ({ params }) {
-    const lesson = await Lesson.query().where('id', params.id).first()
+    const lesson = await Lesson
+      .query()
+      .with('domain')
+      .where('id', params.id)
+      .first()
 
     return lesson
   }

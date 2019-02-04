@@ -23,7 +23,7 @@ class LessonTaskOptionController {
     const lesson = await Lesson
       .query()
       .where('id', params.id)
-      .with('tasks')
+      .with('tasks.options')
       .fetch()
 
     return lesson
