@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+// import PropTypes from 'prop-types';
 
 import Header from '~/components/Header';
 import Sidebar from '~/components/Sidebar';
@@ -8,13 +8,13 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 
 const Layout = ({
-  classes, children,
+  classes, children, sidebar, header,
 }) => (
   <div className={classes.root}>
-    <Sidebar />
+    {sidebar && <Sidebar />}
 
     <div className={classes.appContent}>
-      <Header />
+      {sidebar && <Header />}
       <main className={classes.content}>
         {children}
       </main>
@@ -22,4 +22,9 @@ const Layout = ({
   </div>
 );
 
-export default withStyles(styles)(Layout);
+Layout.defaultProps = {
+  sidebar: true,
+  header: true,
+};
+
+export default withStyles(styles, { withTheme: true })(Layout);

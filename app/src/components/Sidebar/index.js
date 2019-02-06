@@ -2,6 +2,10 @@ import React, { Fragment, Component } from 'react';
 import { compose } from 'recompose';
 // import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
+
 import { Drawer, MenuList, MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
@@ -11,6 +15,8 @@ import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew';
 import DateRange from '@material-ui/icons/DateRange';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+
+import { Creators as SideBarActions } from '~/store/ducks/sidebar';
 
 import { styles } from './styles';
 
@@ -27,24 +33,26 @@ class Sidebar extends Component {
     return (
       <Fragment>
         <Drawer
-          open={false}
-          onClose={() => {}}
+          open={this.props.sidebar.status}
+          onClose={() => {
+            this.props.setClose();
+          }}
           classes={{
             paper: classes.drawerPaper,
           }}
         >
           <div className={classes.drawerHeader}>
-            <IconButton onClick={() => {}}>
+            <IconButton onClick={() => this.props.setClose()}>
               <ChevronLeftIcon />
             </IconButton>
           </div>
 
           <MenuList>
-            <MenuItem component="Agenda" to="/agenda" selected={false} onClick={() => {}}>
+            <MenuItem component={Link} to="/lesson" selected={false} onClick={() => this.props.setClose()}>
               <ListItemIcon>
                 <DateRange />
               </ListItemIcon>
-              <ListItemText inset primary="Teste" />
+              <ListItemText inset primary="Principal" />
             </MenuItem>
 
             <MenuItem
@@ -62,7 +70,17 @@ class Sidebar extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  sidebar: state.sidebar,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({ ...SideBarActions }, dispatch);
+
 export default compose(
   withStyles(styles, { withTheme: true }),
   withWidth(),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
 )(Sidebar);

@@ -6,7 +6,7 @@ class UserLessonController {
   async index () {
     const userlesson = await UserLesson
       .query()
-      .with('lessons')
+      .with('lessons.domain')
       .fetch()
 
     return userlesson

@@ -1,15 +1,20 @@
 import React, { Fragment } from 'react';
 
 import { compose } from 'recompose';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import Typography from '@material-ui/core/Typography';
 import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Menu } from '@material-ui/icons';
 
+import { Creators as SideBarActions } from '~/store/ducks/sidebar';
+
 import styles from './styles';
 
 const Header = ({
-  classes,
+  classes, setToggle,
 }) => (
   <Fragment>
     <AppBar position="sticky" className={classes.appBar}>
@@ -17,7 +22,9 @@ const Header = ({
         <IconButton
           color="inherit"
           aria-label="open drawer"
-          onClick={() => {}}
+          onClick={() => {
+            setToggle();
+          }}
           className={classes.navIconHide}
         >
           <Menu />
@@ -30,6 +37,12 @@ const Header = ({
   </Fragment>
 );
 
+const mapDispatchToProps = dispatch => bindActionCreators(SideBarActions, dispatch);
+
 export default compose(
   withStyles(styles, { withTheme: true }),
+  connect(
+    null,
+    mapDispatchToProps,
+  ),
 )(Header);
