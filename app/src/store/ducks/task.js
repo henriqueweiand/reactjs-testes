@@ -19,7 +19,10 @@ const INITIAL_STATE = {
 export default function task(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.TASK_REQUEST:
-      return { ...INITIAL_STATE };
+      return {
+        ...INITIAL_STATE,
+        correctTask: [],
+      };
     case Types.TASK_REQUEST_SUCCESS:
       return {
         ...state,

@@ -29,14 +29,26 @@ export function* nextTask() {
 
     correctTask.push(currentTask);
 
-    yield put(TaskActions.nextTaskSuccess({
-      progress: progress + 1,
-      done: correctTask.length === tasks.length,
-      correctTask,
-      currentTask: tasks.filter(task => !_.find(correctTask, { id: task.id }))[0] || false,
-    }));
-
-    if (correctTask.length === tasks.length) { yield put(push('/lesson/complete')); }
+    if (correctTask.length === tasks.length) {
+      yield put(
+        TaskActions.nextTaskSuccess({
+          progress: tasks.length,
+          done: true,
+          correctTask: [],
+          currentTask: false,
+        }),
+      );
+      yield put(push('/lesson/complete'));
+    } else {
+      yield put(
+        TaskActions.nextTaskSuccess({
+          progress: progress + 1,
+          done: correctTask.length === tasks.length,
+          correctTask,
+          currentTask: tasks.filter(task => !_.find(correctTask, { id: task.id }))[0],
+        }),
+      );
+    }
   } catch (err) {
     yield put(SnackbarActions.setMessage('error', 'Não foi possivel avançar a questão'));
     console.log(err);

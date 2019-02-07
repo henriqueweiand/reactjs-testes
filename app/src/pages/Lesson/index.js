@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Creators as TaskActions } from '~/store/ducks/task';
 
